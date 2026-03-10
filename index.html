@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMM - Gestão de Marketing | Gogó da Ema 25 Anos</title>
+    <title>RMM - Gogó da Ema 25 Anos</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .btn-gold { background-color: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; }
-        .btn-gold:hover { background-color: #d97706; transform: scale(1.05); }
+        .btn-gold { background-color: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-gold:hover { background-color: #d97706; transform: scale(1.02); }
         .card-dark { background-color: #1e293b; border: 1px solid #334155; }
-        .gallery-item { transition: 0.2s; border: 2px solid transparent; }
-        .gallery-item.active { border-color: #fbbf24; transform: scale(1.05); }
+        .gallery-item { cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
+        .gallery-item.active { border-color: #fbbf24; }
     </style>
 </head>
 <body>
@@ -22,99 +22,63 @@
             <div>
                 <div class="mb-10 text-center">
                     <h1 class="text-2xl font-bold text-yellow-500">Gogó da Ema</h1>
-                    <p class="text-xs text-slate-400 uppercase tracking-widest">25 Anos de Sabor</p>
+                    <p class="text-[10px] text-slate-400 uppercase tracking-[0.3em]">25 Anos de Sabor</p>
                 </div>
-                <nav class="space-y-4 font-medium">
-                    <a href="#" class="flex items-center space-x-3 text-yellow-500 bg-slate-800 p-3 rounded-lg"><i class="fas fa-home w-5"></i> <span>Dashboard</span></a>
-                    <a href="#" class="flex items-center space-x-3 text-slate-400 hover:text-white p-3"><i class="fas fa-images w-5"></i> <span>Minha Galeria</span></a>
-                    <a href="#" class="flex items-center space-x-3 text-slate-400 hover:text-white p-3"><i class="fas fa-calendar-alt w-5"></i> <span>Agendamentos</span></a>
+                <nav class="space-y-2">
+                    <div class="flex items-center space-x-3 text-yellow-500 bg-slate-800 p-3 rounded-xl"><i class="fas fa-home"></i> <span>Mesa de Preparo</span></div>
+                    <div class="flex items-center space-x-3 text-slate-500 p-3 opacity-50"><i class="fas fa-images"></i> <span>Minha Galeria</span></div>
                 </nav>
             </div>
-            <div class="p-4 border-t border-slate-700 bg-slate-800/50 rounded-xl">
-                <p class="text-xs text-slate-500">Licença: <span class="text-green-500 font-bold">ATIVA</span></p>
-                <p class="text-[10px] text-slate-400">Vence em: 10/03/2027</p>
+            <div class="p-4 border-t border-slate-700 bg-slate-900/50 rounded-xl">
+                <p class="text-[10px] text-slate-500">Licença: <span class="text-green-500 font-bold">ATIVA</span></p>
             </div>
         </aside>
 
-        <main class="flex-1 overflow-y-auto p-8">
-            <header class="flex justify-between items-center mb-8">
-                <h2 class="text-3xl font-bold text-white">Mesa de Preparo <span class="text-yellow-500 text-lg font-normal ml-2">| Criar Post</span></h2>
-                <div class="flex items-center space-x-4 bg-slate-800 p-2 px-4 rounded-full border border-slate-700">
-                    <span class="text-sm font-medium">Admin Gogó</span>
-                    <div class="w-8 h-8 rounded-full bg-yellow-500 text-black flex items-center justify-center font-bold">G</div>
-                </div>
-            </header>
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                <div class="card-dark p-8 rounded-3xl shadow-2xl space-y-6 border-t-4 border-yellow-500">
+        <main class="flex-1 overflow-y-auto p-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                
+                <div class="card-dark p-8 rounded-[2rem] shadow-2xl border-t-4 border-yellow-500">
+                    <h2 class="text-2xl font-bold mb-6">Mesa de Preparo</h2>
                     
-                    <div>
-                        <label class="block text-sm font-semibold mb-3 text-slate-300">1. Sua Galeria (Selecione ou adicione)</label>
-                        <div class="grid grid-cols-4 gap-3" id="gallery-container">
-                            <input type="file" id="file-upload" class="hidden" accept="image/*">
-                            <div onclick="document.getElementById('file-upload').click()" class="h-24 bg-slate-800 border-2 border-dashed border-slate-600 rounded-xl cursor-pointer hover:border-yellow-500 flex flex-col items-center justify-center text-slate-500 transition-all">
-                                <i class="fas fa-plus mb-1"></i>
-                                <span class="text-[10px] font-bold">UPLOAD</span>
+                    <div class="space-y-6">
+                        <div>
+                            <p class="text-sm font-bold text-slate-400 mb-3 uppercase">1. Adicionar à Galeria</p>
+                            <div class="flex gap-3" id="gallery-container">
+                                <input type="file" id="file-input" class="hidden" accept="image/*" onchange="handleImage(event)">
+                                <button onclick="document.getElementById('file-input').click()" class="w-24 h-24 border-2 border-dashed border-slate-600 rounded-2xl flex flex-col items-center justify-center text-slate-500 hover:border-yellow-500 hover:text-yellow-500 transition-all">
+                                    <i class="fas fa-plus text-xl"></i>
+                                    <span class="text-[10px] mt-1 font-bold">UPLOAD</span>
+                                </button>
+                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300" class="gallery-item w-24 h-24 object-cover rounded-2xl active" onclick="setPreview(this)">
                             </div>
-                            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300" class="gallery-item h-24 w-full object-cover rounded-xl cursor-pointer active" onclick="selectImage(this)">
                         </div>
-                    </div>
 
-                    <div>
-                        <label class="block text-sm font-semibold mb-2 text-slate-300">2. Legenda Criativa</label>
-                        <textarea id="caption-input" oninput="updateCaption()" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-4 h-32 text-sm focus:ring-2 focus:ring-yellow-500 outline-none transition-all" placeholder="Dica: Conte a história deste prato..."></textarea>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-slate-900/50 p-3 rounded-xl border border-slate-800">
-                            <label class="block text-[10px] uppercase font-bold text-slate-500 mb-1">Data de Postagem</label>
-                            <input type="date" class="bg-transparent w-full text-white outline-none cursor-pointer" value="2026-03-11">
+                        <div>
+                            <p class="text-sm font-bold text-slate-400 mb-2 uppercase">2. Legenda</p>
+                            <textarea id="caption-box" oninput="syncText()" class="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 h-32 outline-none focus:border-yellow-500 transition-all" placeholder="Escreva aqui..."></textarea>
                         </div>
-                        <div class="bg-slate-900/50 p-3 rounded-xl border border-slate-800">
-                            <label class="block text-[10px] uppercase font-bold text-slate-500 mb-1">Horário</label>
-                            <input type="time" class="bg-transparent w-full text-white outline-none cursor-pointer" value="11:30">
-                        </div>
-                    </div>
 
-                    <button onclick="simulateSchedule()" class="w-full btn-gold py-5 rounded-2xl text-lg tracking-widest uppercase flex items-center justify-center space-x-3 shadow-xl">
-                        <i class="fas fa-paper-plane"></i>
-                        <span>Agendar Publicação</span>
-                    </button>
+                        <button onclick="alert('✅ Sucesso! Post agendado para o Instagram do Gogó da Ema.')" class="w-full btn-gold p-5 rounded-2xl shadow-lg flex items-center justify-center space-x-3">
+                            <i class="fas fa-calendar-check"></i>
+                            <span class="uppercase tracking-widest">Agendar Publicação</span>
+                        </button>
+                    </div>
                 </div>
 
-                <div class="flex flex-col items-center justify-center space-y-4">
-                    <p class="text-xs font-bold text-slate-500 tracking-[0.2em] uppercase">Visualização no Feed</p>
-                    <div class="w-[340px] h-[680px] border-[12px] border-slate-900 rounded-[50px] bg-white shadow-[0_0_50px_rgba(0,0,0,0.5)] relative overflow-hidden ring-4 ring-slate-800">
-                        <div class="p-4 border-b flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-yellow-400 to-pink-600 p-[2px]">
-                                    <div class="w-full h-full bg-white rounded-full flex items-center justify-center font-bold text-[10px] text-black">G</div>
-                                </div>
-                                <span class="text-black text-[12px] font-bold">gogodaema_oficial</span>
-                            </div>
-                            <i class="fas fa-ellipsis-h text-slate-400 text-xs"></i>
+                <div class="flex flex-col items-center">
+                    <div class="w-[320px] h-[640px] bg-white rounded-[3rem] border-[10px] border-slate-900 shadow-2xl relative overflow-hidden">
+                        <div class="p-4 border-b flex items-center space-x-2">
+                            <div class="w-7 h-7 bg-yellow-500 rounded-full flex items-center justify-center text-[10px] font-bold text-black">G</div>
+                            <span class="text-black text-xs font-bold">gogodaema_oficial</span>
                         </div>
-                        <div class="w-full aspect-square bg-slate-100 overflow-hidden">
-                             <img id="preview-img" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800" class="w-full h-full object-cover shadow-inner">
-                        </div>
-                        <div class="p-4 space-y-3">
-                            <div class="flex justify-between items-center text-black text-xl">
-                                <div class="flex space-x-4">
-                                    <i class="far fa-heart cursor-pointer hover:text-red-500"></i>
-                                    <i class="far fa-comment"></i>
-                                    <i class="far fa-paper-plane"></i>
-                                </div>
-                                <i class="far fa-bookmark"></i>
+                        <img id="main-preview" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800" class="w-full aspect-square object-cover">
+                        <div class="p-4 text-black">
+                            <div class="flex space-x-4 text-xl mb-2">
+                                <i class="far fa-heart"></i>
+                                <i class="far fa-comment"></i>
                             </div>
-                            <div class="space-y-1">
-                                <p class="text-black text-[12px] font-extrabold">1.250 curtidas</p>
-                                <p class="text-black text-[13px] leading-tight" id="preview-caption">
-                                    <span class="font-bold">gogodaema_oficial</span> <span class="text-slate-700 text-[12px]">Comemore com a gente! O Gogó faz 25 anos e o presente é para você!!</span>
-                                </p>
-                                <p class="text-slate-400 text-[10px] uppercase mt-2">Há 2 minutos</p>
-                            </div>
+                            <p class="text-xs leading-relaxed"><span class="font-bold">gogodaema_oficial</span> <span id="text-preview">Legenda do Gogó...</span></p>
                         </div>
-                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-7 bg-slate-900 rounded-b-3xl"></div>
                     </div>
                 </div>
             </div>
@@ -122,44 +86,32 @@
     </div>
 
     <script>
-        // Lógica de Upload e Galeria
-        const fileInput = document.getElementById('file-upload');
-        const galleryContainer = document.getElementById('gallery-container');
-        const previewImg = document.getElementById('preview-img');
-
-        fileInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
+        function handleImage(event) {
+            const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function(event) {
-                    const newImg = document.createElement('img');
-                    newImg.src = event.target.result;
-                    newImg.className = 'gallery-item h-24 w-full object-cover rounded-xl cursor-pointer';
-                    newImg.onclick = function() { selectImage(this); };
-                    galleryContainer.appendChild(newImg);
-                    selectImage(newImg); // Seleciona automaticamente a nova foto
-                }
+                reader.onload = function(e) {
+                    const container = document.getElementById('gallery-container');
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.className = 'gallery-item w-24 h-24 object-cover rounded-2xl';
+                    img.onclick = function() { setPreview(this); };
+                    container.appendChild(img);
+                    setPreview(img);
+                };
                 reader.readAsDataURL(file);
             }
-        });
+        }
 
-        function selectImage(el) {
-            // Remove borda ativa de todos
-            document.querySelectorAll('.gallery-item').forEach(item => item.classList.remove('active'));
-            // Adiciona borda no selecionado
+        function setPreview(el) {
+            document.querySelectorAll('.gallery-item').forEach(i => i.classList.remove('active'));
             el.classList.add('active');
-            // Atualiza o preview
-            previewImg.src = el.src;
+            document.getElementById('main-preview').src = el.src;
         }
 
-        function updateCaption() {
-            const text = document.getElementById('caption-input').value;
-            const previewText = document.getElementById('preview-caption');
-            previewText.innerHTML = `<span class="font-bold">gogodaema_oficial</span> <span class="text-slate-700 text-[12px]">${text || 'Sua legenda aparecerá aqui...'}</span>`;
-        }
-
-        function simulateSchedule() {
-            alert("🚀 Sucesso! Post do Gogó da Ema agendado no sistema.");
+        function syncText() {
+            const val = document.getElementById('caption-box').value;
+            document.getElementById('text-preview').innerText = val || "Legenda do Gogó...";
         }
     </script>
 </body>
