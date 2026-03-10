@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMM - Gestão de Marketing | Gogó da Ema 25 Anos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .gold-border { border-color: #fbbf24; }
+        .btn-gold { background-color: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; }
+        .btn-gold:hover { background-color: #d97706; transform: scale(1.05); }
+        .card-dark { background-color: #1e293b; border: 1px solid #334155; }
+    </style>
+</head>
+<body>
+
+    <div class="flex h-screen overflow-hidden">
+        <aside class="w-64 card-dark p-6 flex flex-col justify-between">
+            <div>
+                <div class="mb-10 text-center">
+                    <h1 class="text-2xl font-bold text-yellow-500">Gogó da Ema</h1>
+                    <p class="text-xs text-slate-400 uppercase tracking-widest">25 Anos de Sabor</p>
+                </div>
+                <nav class="space-y-4">
+                    <a href="#" class="flex items-center space-x-3 text-yellow-500 bg-slate-800 p-3 rounded-lg"><i class="fas fa-home"></i> <span>Dashboard</span></a>
+                    <a href="#" class="flex items-center space-x-3 text-slate-400 hover:text-white p-3"><i class="fas fa-calendar-alt"></i> <span>Calendário</span></a>
+                    <a href="#" class="flex items-center space-x-3 text-slate-400 hover:text-white p-3"><i class="fas fa-images"></i> <span>Galeria</span></a>
+                    <a href="#" class="flex items-center space-x-3 text-slate-400 hover:text-white p-3"><i class="fas fa-chart-line"></i> <span>Desempenho</span></a>
+                </nav>
+            </div>
+            <div class="p-4 border-t border-slate-700">
+                <p class="text-xs text-slate-500">Licença: <span class="text-green-500 font-bold text-sm">ATIVA</span></p>
+                <p class="text-[10px] text-slate-600">Vence em: 10/03/2027</p>
+            </div>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto p-8">
+            <header class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-semibold">Mesa de Preparo (Novo Post)</h2>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-slate-400">Olá, Administrador</span>
+                    <div class="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black font-bold">A</div>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="card-dark p-6 rounded-2xl space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">1. Selecionar da Galeria</label>
+                        <div class="grid grid-cols-4 gap-2">
+                            <div class="h-20 bg-slate-700 rounded-lg cursor-pointer hover:border-2 hover:border-yellow-500 flex items-center justify-center border-2 border-yellow-500"><i class="fas fa-check-circle text-yellow-500"></i></div>
+                            <div class="h-20 bg-slate-700 rounded-lg cursor-pointer opacity-50"></div>
+                            <div class="h-20 bg-slate-700 rounded-lg cursor-pointer opacity-50"></div>
+                            <div class="h-20 bg-slate-700 rounded-lg cursor-pointer flex items-center justify-center text-slate-500"><i class="fas fa-plus"></i></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">2. Legenda do Post</label>
+                        <textarea class="w-full bg-slate-900 border border-slate-700 rounded-lg p-3 h-32 focus:outline-none focus:ring-2 focus:ring-yellow-500" placeholder="Comemore com a gente! O Gogó faz 25 anos e o presente é para você!!"></textarea>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Data</label>
+                            <input type="date" class="w
