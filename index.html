@@ -8,11 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .btn-gold { background-color: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-gold { background-color: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; cursor: pointer; border: none; }
         .btn-gold:hover { background-color: #d97706; transform: scale(1.02); }
         .card-dark { background-color: #1e293b; border: 1px solid #334155; }
         .gallery-item { cursor: pointer; border: 2px solid transparent; transition: 0.2s; }
         .gallery-item.active { border-color: #fbbf24; }
+        .sidebar-link { cursor: pointer; transition: 0.3s; }
+        .sidebar-link:hover { background-color: #334155; color: #fbbf24; }
+        .sidebar-link.active { background-color: #1e293b; color: #fbbf24; border-left: 4px solid #fbbf24; }
+        .hidden-section { display: none; }
     </style>
 </head>
 <body>
@@ -25,8 +29,12 @@
                     <p class="text-[10px] text-slate-400 uppercase tracking-[0.3em]">25 Anos de Sabor</p>
                 </div>
                 <nav class="space-y-2">
-                    <div class="flex items-center space-x-3 text-yellow-500 bg-slate-800 p-3 rounded-xl"><i class="fas fa-home"></i> <span>Mesa de Preparo</span></div>
-                    <div class="flex items-center space-x-3 text-slate-500 p-3 opacity-50"><i class="fas fa-images"></i> <span>Minha Galeria</span></div>
+                    <div id="link-preparo" onclick="showSection('preparo')" class="sidebar-link active flex items-center space-x-3 p-3 rounded-xl">
+                        <i class="fas fa-utensils"></i> <span>Mesa de Preparo</span>
+                    </div>
+                    <div id="link-galeria" onclick="showSection('galeria')" class="sidebar-link flex items-center space-x-3 p-3 rounded-xl text-slate-400">
+                        <i class="fas fa-images"></i> <span>Minha Galeria</span>
+                    </div>
                 </nav>
             </div>
             <div class="p-4 border-t border-slate-700 bg-slate-900/50 rounded-xl">
@@ -35,30 +43,27 @@
         </aside>
 
         <main class="flex-1 overflow-y-auto p-10">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-                
+            
+            <div id="section-preparo" class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <div class="card-dark p-8 rounded-[2rem] shadow-2xl border-t-4 border-yellow-500">
-                    <h2 class="text-2xl font-bold mb-6">Mesa de Preparo</h2>
-                    
+                    <h2 class="text-2xl font-bold mb-6 italic text-yellow-500">Mesa de Preparo</h2>
                     <div class="space-y-6">
                         <div>
-                            <p class="text-sm font-bold text-slate-400 mb-3 uppercase">1. Adicionar à Galeria</p>
-                            <div class="flex gap-3" id="gallery-container">
+                            <p class="text-sm font-bold text-slate-400 mb-3 uppercase">1. Selecionar da Galeria</p>
+                            <div class="flex flex-wrap gap-3" id="mini-gallery-container">
                                 <input type="file" id="file-input" class="hidden" accept="image/*" onchange="handleImage(event)">
-                                <button onclick="document.getElementById('file-input').click()" class="w-24 h-24 border-2 border-dashed border-slate-600 rounded-2xl flex flex-col items-center justify-center text-slate-500 hover:border-yellow-500 hover:text-yellow-500 transition-all">
-                                    <i class="fas fa-plus text-xl"></i>
-                                    <span class="text-[10px] mt-1 font-bold">UPLOAD</span>
+                                <button onclick="document.getElementById('file-input').click()" class="w-20 h-20 border-2 border-dashed border-slate-600 rounded-xl flex flex-col items-center justify-center text-slate-500 hover:border-yellow-500 hover:text-yellow-500 transition-all">
+                                    <i class="fas fa-plus"></i>
+                                    <span class="text-[8px] mt-1 font-bold tracking-tighter">UPLOAD</span>
                                 </button>
-                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300" class="gallery-item w-24 h-24 object-cover rounded-2xl active" onclick="setPreview(this)">
+                                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300" class="gallery-item w-20 h-20 object-cover rounded-xl active" onclick="setPreview(this)">
                             </div>
                         </div>
-
                         <div>
-                            <p class="text-sm font-bold text-slate-400 mb-2 uppercase">2. Legenda</p>
-                            <textarea id="caption-box" oninput="syncText()" class="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 h-32 outline-none focus:border-yellow-500 transition-all" placeholder="Escreva aqui..."></textarea>
+                            <p class="text-sm font-bold text-slate-400 mb-2 uppercase">2. Legenda do Post</p>
+                            <textarea id="caption-box" oninput="syncText()" class="w-full bg-slate-900 border border-slate-700 rounded-2xl p-4 h-32 outline-none focus:border-yellow-500 text-white" placeholder="Escreva aqui..."></textarea>
                         </div>
-
-                        <button onclick="alert('✅ Sucesso! Post agendado para o Instagram do Gogó da Ema.')" class="w-full btn-gold p-5 rounded-2xl shadow-lg flex items-center justify-center space-x-3">
+                        <button onclick="alert('✅ Parabéns! Publicação enviada para agendamento.')" class="w-full btn-gold p-5 rounded-2xl shadow-lg flex items-center justify-center space-x-3">
                             <i class="fas fa-calendar-check"></i>
                             <span class="uppercase tracking-widest">Agendar Publicação</span>
                         </button>
@@ -66,38 +71,81 @@
                 </div>
 
                 <div class="flex flex-col items-center">
-                    <div class="w-[320px] h-[640px] bg-white rounded-[3rem] border-[10px] border-slate-900 shadow-2xl relative overflow-hidden">
+                    <div class="w-[300px] h-[600px] bg-white rounded-[3rem] border-[10px] border-slate-900 shadow-2xl relative overflow-hidden ring-4 ring-slate-800">
                         <div class="p-4 border-b flex items-center space-x-2">
                             <div class="w-7 h-7 bg-yellow-500 rounded-full flex items-center justify-center text-[10px] font-bold text-black">G</div>
-                            <span class="text-black text-xs font-bold">gogodaema_oficial</span>
+                            <span class="text-black text-[11px] font-bold">gogodaema_oficial</span>
                         </div>
                         <img id="main-preview" src="https://images.unsplash.com/photo-1544025162-d76694265947?w=800" class="w-full aspect-square object-cover">
                         <div class="p-4 text-black">
-                            <div class="flex space-x-4 text-xl mb-2">
-                                <i class="far fa-heart"></i>
-                                <i class="far fa-comment"></i>
-                            </div>
-                            <p class="text-xs leading-relaxed"><span class="font-bold">gogodaema_oficial</span> <span id="text-preview">Legenda do Gogó...</span></p>
+                            <div class="flex space-x-4 text-lg mb-2"><i class="far fa-heart"></i><i class="far fa-comment"></i></div>
+                            <p class="text-[11px] leading-snug"><span class="font-bold">gogodaema_oficial</span> <span id="text-preview">Aguardando sua legenda...</span></p>
+                        </div>
+                        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-28 h-6 bg-slate-900 rounded-b-2xl"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-galeria" class="hidden-section max-w-6xl mx-auto">
+                <div class="flex justify-between items-center mb-10">
+                    <h2 class="text-3xl font-bold italic text-yellow-500">Minha Galeria</h2>
+                    <button onclick="document.getElementById('file-input').click()" class="btn-gold px-6 py-2 rounded-lg text-sm uppercase"><i class="fas fa-plus mr-2"></i>Novo Prato</button>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6" id="full-gallery-container">
+                    <div class="relative group aspect-square rounded-2xl overflow-hidden card-dark border border-slate-700">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=300" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="showSection('preparo')" class="text-xs bg-yellow-500 text-black px-3 py-1 rounded font-bold">USAR NO POST</button>
                         </div>
                     </div>
                 </div>
             </div>
+
         </main>
     </div>
 
     <script>
+        function showSection(section) {
+            document.getElementById('section-preparo').classList.add('hidden-section');
+            document.getElementById('section-galeria').classList.add('hidden-section');
+            document.getElementById('link-preparo').classList.remove('active', 'text-yellow-500');
+            document.getElementById('link-galeria').classList.remove('active', 'text-yellow-500');
+
+            if(section === 'preparo') {
+                document.getElementById('section-preparo').classList.remove('hidden-section');
+                document.getElementById('link-preparo').classList.add('active');
+            } else {
+                document.getElementById('section-galeria').classList.remove('hidden-section');
+                document.getElementById('link-galeria').classList.add('active');
+            }
+        }
+
         function handleImage(event) {
             const file = event.target.files[0];
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const container = document.getElementById('gallery-container');
-                    const img = document.createElement('img');
-                    img.src = e.target.result;
-                    img.className = 'gallery-item w-24 h-24 object-cover rounded-2xl';
-                    img.onclick = function() { setPreview(this); };
-                    container.appendChild(img);
-                    setPreview(img);
+                    const src = e.target.result;
+                    
+                    // Adicionar na mini galeria (preparo)
+                    const miniContainer = document.getElementById('mini-gallery-container');
+                    const miniImg = document.createElement('img');
+                    miniImg.src = src;
+                    miniImg.className = 'gallery-item w-20 h-20 object-cover rounded-xl';
+                    miniImg.onclick = function() { setPreview(this); };
+                    miniContainer.appendChild(miniImg);
+
+                    // Adicionar na galeria cheia
+                    const fullContainer = document.getElementById('full-gallery-container');
+                    const fullCard = document.createElement('div');
+                    fullCard.className = 'relative group aspect-square rounded-2xl overflow-hidden card-dark border border-slate-700';
+                    fullCard.innerHTML = `<img src="${src}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <button onclick="showSection('preparo')" class="text-xs bg-yellow-500 text-black px-3 py-1 rounded font-bold">USAR NO POST</button>
+                        </div>`;
+                    fullContainer.appendChild(fullCard);
+
+                    setPreview(miniImg);
                 };
                 reader.readAsDataURL(file);
             }
@@ -111,7 +159,7 @@
 
         function syncText() {
             const val = document.getElementById('caption-box').value;
-            document.getElementById('text-preview').innerText = val || "Legenda do Gogó...";
+            document.getElementById('text-preview').innerText = val || "Aguardando sua legenda...";
         }
     </script>
 </body>
