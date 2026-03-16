@@ -6,9 +6,12 @@
     <title>RMM - Gastrobar Gogó da Ema</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #1a1a1a; color: #e0e0e0; }
-        .status-card { background: #2d2d2d; border-radius: 8px; padding: 20px; margin-bottom: 15px; border-left: 5px solid #4CAF50; }
+        body { background-color: #1a1a1a; color: #e0e0e0; font-family: sans-serif; }
+        .status-card { background: #2d2d2d; border-radius: 8px; padding: 20px; margin-bottom: 15px; border-left: 5px solid #4CAF50; transition: 0.3s; }
+        .status-card:hover { transform: scale(1.01); }
         .status-offline { border-left-color: #f44336; }
+        .btn-tecnico { background: #fbbf24; color: #000; font-weight: bold; padding: 12px 24px; border-radius: 8px; cursor: pointer; display: inline-block; transition: 0.3s; }
+        .btn-tecnico:hover { background: #d97706; transform: translateY(-2px); }
     </style>
 </head>
 <body class="p-5">
@@ -31,26 +34,33 @@
         <div class="status-card">
             <div class="flex justify-between items-center">
                 <div>
-                    <h2 class="text-xl font-semibold">App de Pedidos / Cardápio</h2>
-                    <p class="text-sm text-gray-400">Versão 2.0.1</p>
+                    <h2 class="text-xl font-semibold">App de Marketing</h2>
+                    <p class="text-sm text-gray-400">Versão de Produção</p>
                 </div>
                 <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-xs">ONLINE</span>
             </div>
         </div>
 
-        <div class="status-card status-offline">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h2 class="text-xl font-semibold text-red-400">App de Marketing</h2>
-                    <p class="text-sm text-gray-400">Verificar Deployments do GitHub</p>
-                </div>
-                <span class="bg-red-900 text-red-300 px-3 py-1 rounded-full text-xs">ATENÇÃO</span>
-            </div>
+        <div class="mt-10 p-6 border-2 border-dashed border-gray-700 rounded-lg text-center">
+            <h3 class="text-lg mb-4">Precisa de suporte especializado?</h3>
+            <button onclick="abrirChamado()" class="btn-tecnico">
+                ⚠️ ABRIR CHAMADO TÉCNICO
+            </button>
+            <p id="msg-chamado" class="mt-4 text-yellow-500 font-bold hidden text-sm">Chamado enviado com sucesso! Aguarde o contato do suporte.</p>
         </div>
     </div>
 
     <footer class="mt-10 text-center text-xs text-gray-500">
         &copy; 2026 Gastrobar Gogó da Ema - Sistema de Gestão RMM
     </footer>
+
+    <script>
+        function abrirChamado() {
+            const msg = document.getElementById('msg-chamado');
+            msg.classList.remove('hidden');
+            // Aqui poderíamos enviar um e-mail ou mensagem automática
+            alert("Suporte Técnico Notificado! O restaurante Gogó da Ema solicitou assistência.");
+        }
+    </script>
 </body>
 </html>
