@@ -3,55 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMM - Marketing Gogó da Ema</title>
+    <title>RMM - Gogó da Ema</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: sans-serif; }
-        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
-        .btn-gold { background: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; }
         .hidden-section { display: none; }
     </style>
 </head>
 <body>
     <div id="login-screen" class="h-screen flex items-center justify-center">
-        <div class="card p-8 w-full max-w-md text-center">
-            <h1 class="text-3xl font-bold text-yellow-500 mb-2">Gogó da Ema</h1>
-            <p class="text-slate-400 mb-6">Portal de Marketing - 25 Anos</p>
-            <input type="email" id="email" placeholder="admin@gogodaema.com.br" class="w-full p-3 mb-4 rounded bg-slate-800 border border-slate-700 text-white outline-none">
-            <input type="password" id="pass" placeholder="Sua senha" class="w-full p-3 mb-6 rounded bg-slate-800 border border-slate-700 text-white outline-none">
-            <button onclick="fazerLogin()" class="w-full btn-gold py-3 rounded-lg">ENTRAR NO SISTEMA</button>
+        <div class="bg-slate-800 p-8 rounded-xl w-full max-w-md text-center border border-slate-700">
+            <h1 class="text-3xl font-bold text-yellow-500 mb-6">Gogó da Ema</h1>
+            <p class="mb-6 text-slate-300">Clique abaixo para liberar o acesso</p>
+            <button onclick="entrarDireto()" class="w-full bg-yellow-500 text-black font-bold py-4 rounded-lg hover:bg-yellow-400">
+                ACESSO LIBERADO - ENTRAR
+            </button>
         </div>
     </div>
 
     <div id="main-app" class="h-screen flex hidden-section">
-        <aside class="w-64 bg-slate-900 p-6 border-right border-slate-700">
+        <aside class="w-64 bg-slate-900 p-6 border-r border-slate-700">
             <h2 class="text-xl font-bold text-yellow-500 mb-10 text-center">MENU RMM</h2>
             <nav class="space-y-4">
-                <button class="w-full text-left p-3 bg-slate-800 rounded text-yellow-500 font-bold"><i class="fas fa-images mr-2"></i> Minha Galeria</button>
+                <div class="p-3 bg-slate-800 rounded text-yellow-500 font-bold"><i class="fas fa-images mr-2"></i> Minha Galeria</div>
             </nav>
         </aside>
         <main class="flex-1 p-10 bg-slate-950">
-            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Boas-vindas ao Gogó da Ema!</h2>
-            <div class="card p-10 text-center border-dashed border-2 border-slate-700">
-                <p class="text-slate-400 text-lg mb-4">Sua área de marketing está pronta.</p>
-                <p class="text-yellow-500 font-bold text-2xl">Arraste suas fotos para cá!</p>
+            <h2 class="text-3xl font-bold mb-6 text-yellow-500 text-center">Painel de Marketing Ativado!</h2>
+            <div class="border-4 border-dashed border-slate-800 rounded-3xl p-20 text-center">
+                <i class="fas fa-cloud-upload-alt text-6xl text-slate-700 mb-4"></i>
+                <p class="text-2xl text-slate-400">Arraste suas fotos aqui para o <b>Gogó da Ema</b></p>
             </div>
         </main>
     </div>
 
     <script>
-        function fazerLogin() {
-            const emailDigitado = document.getElementById('email').value.trim().toLowerCase();
-            const senhaDigitada = document.getElementById('pass').value.trim();
-            
-            // VERIFICAÇÃO SIMPLIFICADA
-            if (emailDigitado.includes('gogodaema') && senhaDigitada === 'Gogo25anos#2026') {
-                document.getElementById('login-screen').classList.add('hidden-section');
-                document.getElementById('main-app').classList.remove('hidden-section');
-            } else {
-                alert('Tente novamente!\nE-mail: admin@gogodaema.com.br\nSenha: Gogo25anos#2026');
-            }
+        function entrarDireto() {
+            document.getElementById('login-screen').classList.add('hidden-section');
+            document.getElementById('main-app').classList.remove('hidden-section');
         }
     </script>
 </body>
