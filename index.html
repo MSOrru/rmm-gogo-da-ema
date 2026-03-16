@@ -3,33 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMM - Gogó da Ema</title>
+    <title>RMM - Marketing Gogó da Ema</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #1a1a1a; color: #e0e0e0; font-family: sans-serif; }
-        .status-card { background: #2d2d2d; border-radius: 8px; padding: 20px; margin-bottom: 15px; border-left: 5px solid #4CAF50; transition: 0.3s; }
-        .btn-tecnico { background: #fbbf24; color: #000; font-weight: bold; padding: 15px 30px; border-radius: 8px; cursor: pointer; transition: 0.3s; display: inline-block; text-decoration: none; }
-        .btn-tecnico:hover { background: #d97706; transform: scale(1.05); }
+        body { background-color: #0f172a; color: #f8fafc; font-family: 'Inter', sans-serif; }
+        .sidebar { background: #1e293b; border-right: 1px solid #334155; }
+        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
+        .btn-gold { background: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; }
+        .btn-gold:hover { background: #d97706; transform: scale(1.02); }
+        .hidden-section { display: none; }
     </style>
 </head>
-<body class="p-5 text-center">
-    <h1 class="text-3xl font-bold text-yellow-500 mt-5">Gogó da Ema - Painel RMM</h1>
-    <p class="text-gray-400 mb-10">Gestão 25 Anos de Sucesso</p>
-
-    <div class="max-w-md mx-auto">
-        <div class="status-card text-left">
-            <h2 class="font-bold">Site e Apps</h2>
-            <p class="text-green-400 text-sm font-bold">● SISTEMAS OPERACIONAIS</p>
-        </div>
-
-        <div class="mt-10 p-8 border-2 border-dashed border-gray-700 rounded-xl">
-            <h3 class="mb-5 text-lg italic text-gray-300">"O presente dos 25 anos é a sua tranquilidade!"</h3>
-            
-            <a href="https://wa.me/+5511984445900?text=Olá!%20O%20Gogó%20da%20Ema%20precisa%20de%20suporte%20técnico%20no%20Painel%20RMM." 
-               target="_blank" class="btn-tecnico">
-                🚀 CHAMAR SUPORTE NO WHATSAPP
-            </a>
+<body>
+    <div id="login-screen" class="h-screen flex items-center justify-center">
+        <div class="card p-8 w-full max-w-md text-center">
+            <h1 class="text-3xl font-bold text-yellow-500 mb-2">Gogó da Ema</h1>
+            <p class="text-slate-400 mb-6">Portal de Marketing - 25 Anos</p>
+            <input type="email" id="email" placeholder="E-mail" class="w-full p-3 mb-4 rounded bg-slate-800 border border-slate-700 outline-none focus:border-yellow-500">
+            <input type="password" id="pass" placeholder="Senha" class="w-full p-3 mb-6 rounded bg-slate-800 border border-slate-700 outline-none focus:border-yellow-500">
+            <button onclick="fazerLogin()" class="w-full btn-gold py-3 rounded-lg">ENTRAR NO SISTEMA</button>
         </div>
     </div>
+
+    <div id="main-app" class="h-screen flex hidden-section">
+        <aside class="w-64 sidebar p-6 flex flex-col justify-between">
+            <div>
+                <h2 class="text-xl font-bold text-yellow-500 mb-10 text-center">PAINEL RMM</h2>
+                <nav class="space-y-4">
+                    <button onclick="mudarAba('galeria')" class="w-full text-left p-3 hover:bg-slate-700 rounded"><i class="fas fa-images mr-2 text-yellow-500"></i> Galeria</button>
+                    <button onclick="mudarAba('post')" class="w-full text-left p-3 hover:bg-slate-700 rounded"><i class="fas fa-plus-circle mr-2 text-yellow-500"></i> Criar Post</button>
+                    <button onclick="mudarAba('calendario')" class="w-full text-left p-3 hover:bg-slate-700 rounded"><i class="fas fa-calendar-alt mr-2 text-yellow-500"></i> Agendamentos</button>
+                </nav>
+            </div>
+            <button onclick="location.reload()" class="text-sm text-slate-500 hover:text-red-400"><i class="fas fa-sign-out-alt mr-2"></i> Sair</button>
+        </aside>
+
+        <main class="flex-1 p-10 overflow-y-auto">
+            <section id="aba-galeria">
+                <h2 class="text-2xl font-bold mb-6">Sua Despensa de Fotos</h2>
+                <div class="grid grid-cols-3 gap-6" id="galeria-fotos">
+                    <div class="card p-4 text-center border-dashed border-2 flex items-center justify-center h-48 cursor-pointer hover:bg-slate-800">
+                        <span>+ Clique para subir foto</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="aba-post" class="hidden-section">
+                <h2 class="text-2xl font-bold mb-6">Mesa de Preparo (Novo Post)</h2>
+                <div class="grid grid-cols-2 gap-10">
+                    <div class="card p-6">
+                        <textarea placeholder="Escreva sua legenda aqui..." class="w-full h-40 bg-slate-800 p-4 rounded mb-4 outline-none"></textarea>
+                        <button class="btn-gold px-6 py-2 rounded">Gerar Preview</button>
+                    </div>
+                    <div class="card p-6 bg-white text-black rounded-xl">
+                        <div class="flex items-center mb-4">
+                            <div class="w-10 h-10 bg-slate-300 rounded-full mr-3"></div>
+                            <span class="font-bold">gogodaema_oficial</span>
+                        </div>
+                        <div class="bg-slate-200 h-64 w-full rounded flex items-center justify-center text-slate-400">Preview da Imagem</div>
+                        <p class="mt-4 text-sm"><b>gogodaema_oficial</b> Sua legenda aparecerá aqui...</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function fazerLogin() {
+            const email = document.getElementById('email').value;
+            const pass = document.getElementById('pass').value;
+            
+            if(email === 'admin@gogodoema.com.br' && pass === 'Gogo25anos#2026') {
+                document.getElementById('login-screen').classList.add('hidden-section');
+                document.getElementById('main-app').classList.remove('hidden-section');
+            } else {
+                alert('Credenciais incorretas!');
+            }
+        }
+
+        function mudarAba(aba) {
+            document.getElementById('aba-galeria').classList.add('hidden-section');
+            document.getElementById('aba-post').classList.add('hidden-section');
+            
+            if(aba === 'galeria') document.getElementById('aba-galeria').classList.remove('hidden-section');
+            if(aba === 'post') document.getElementById('aba-post').classList.remove('hidden-section');
+        }
+    </script>
 </body>
 </html>
