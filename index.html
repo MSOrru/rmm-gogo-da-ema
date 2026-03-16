@@ -3,64 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMM - Gastrobar Gogó da Ema</title>
+    <title>RMM - Gogó da Ema</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #1a1a1a; color: #e0e0e0; font-family: sans-serif; }
         .status-card { background: #2d2d2d; border-radius: 8px; padding: 20px; margin-bottom: 15px; border-left: 5px solid #4CAF50; transition: 0.3s; }
-        .status-card:hover { transform: scale(1.01); }
-        .status-offline { border-left-color: #f44336; }
-        .btn-tecnico { background: #fbbf24; color: #000; font-weight: bold; padding: 12px 24px; border-radius: 8px; cursor: pointer; display: inline-block; transition: 0.3s; }
-        .btn-tecnico:hover { background: #d97706; transform: translateY(-2px); }
+        .btn-tecnico { background: #fbbf24; color: #000; font-weight: bold; padding: 15px 30px; border-radius: 8px; cursor: pointer; transition: 0.3s; display: inline-block; text-decoration: none; }
+        .btn-tecnico:hover { background: #d97706; transform: scale(1.05); }
     </style>
 </head>
-<body class="p-5">
-    <header class="mb-10 text-center">
-        <h1 class="text-3xl font-bold text-yellow-500">Gogó da Ema - Painel RMM</h1>
-        <p class="text-gray-400">Monitoramento e Gestão de Aplicativos - 25 Anos</p>
-    </header>
+<body class="p-5 text-center">
+    <h1 class="text-3xl font-bold text-yellow-500 mt-5">Gogó da Ema - Painel RMM</h1>
+    <p class="text-gray-400 mb-10">Gestão 25 Anos de Sucesso</p>
 
-    <div class="max-w-4xl mx-auto">
-        <div class="status-card">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h2 class="text-xl font-semibold">Site Oficial</h2>
-                    <p class="text-sm text-gray-400">gogodaema.com.br</p>
-                </div>
-                <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-xs">ONLINE</span>
-            </div>
+    <div class="max-w-md mx-auto">
+        <div class="status-card text-left">
+            <h2 class="font-bold">Site e Apps</h2>
+            <p class="text-green-400 text-sm font-bold">● SISTEMAS OPERACIONAIS</p>
         </div>
 
-        <div class="status-card">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h2 class="text-xl font-semibold">App de Marketing</h2>
-                    <p class="text-sm text-gray-400">Versão de Produção</p>
-                </div>
-                <span class="bg-green-900 text-green-300 px-3 py-1 rounded-full text-xs">ONLINE</span>
-            </div>
-        </div>
-
-        <div class="mt-10 p-6 border-2 border-dashed border-gray-700 rounded-lg text-center">
-            <h3 class="text-lg mb-4">Precisa de suporte especializado?</h3>
-            <button onclick="abrirChamado()" class="btn-tecnico">
-                ⚠️ ABRIR CHAMADO TÉCNICO
-            </button>
-            <p id="msg-chamado" class="mt-4 text-yellow-500 font-bold hidden text-sm">Chamado enviado com sucesso! Aguarde o contato do suporte.</p>
+        <div class="mt-10 p-8 border-2 border-dashed border-gray-700 rounded-xl">
+            <h3 class="mb-5 text-lg italic text-gray-300">"O presente dos 25 anos é a sua tranquilidade!"</h3>
+            
+            <a href="https://wa.me/+5511984445900?text=Olá!%20O%20Gogó%20da%20Ema%20precisa%20de%20suporte%20técnico%20no%20Painel%20RMM." 
+               target="_blank" class="btn-tecnico">
+                🚀 CHAMAR SUPORTE NO WHATSAPP
+            </a>
         </div>
     </div>
-
-    <footer class="mt-10 text-center text-xs text-gray-500">
-        &copy; 2026 Gastrobar Gogó da Ema - Sistema de Gestão RMM
-    </footer>
-
-    <script>
-        function abrirChamado() {
-            const msg = document.getElementById('msg-chamado');
-            msg.classList.remove('hidden');
-            // Aqui poderíamos enviar um e-mail ou mensagem automática
-            alert("Suporte Técnico Notificado! O restaurante Gogó da Ema solicitou assistência.");
-        }
-    </script>
 </body>
 </html>
