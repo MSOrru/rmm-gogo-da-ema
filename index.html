@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RMM - Marketing Gogó da Ema</title>
+    <title>Gogó RMM - Inteligência de Marketing</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: sans-serif; }
         .sidebar { background: #1e293b; border-right: 1px solid #334155; }
-        .card-foto { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #334155; transition: 0.3s; cursor: pointer; }
-        .card-foto:hover { transform: translateY(-5px); border-color: #fbbf24; }
         .aba-secao { display: none; }
         .aba-ativa { display: block; }
+        .btn-gold { background: #fbbf24; color: #000; font-weight: bold; }
+        .btn-gold:hover { background: #d97706; }
     </style>
 </head>
 <body class="h-screen flex">
@@ -21,101 +21,93 @@
         <div>
             <h2 class="text-2xl font-bold text-yellow-500 mb-10 text-center">Gogó RMM</h2>
             <nav class="space-y-2">
-                <button onclick="mudar('aba-bar')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition font-bold"><i class="fas fa-glass-martini-alt mr-2 text-yellow-500"></i> Fotos do Bar</button>
-                <button onclick="mudar('aba-cozinha')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition font-bold"><i class="fas fa-utensils mr-2 text-yellow-500"></i> Fotos da Cozinha</button>
-                <button onclick="mudar('aba-post')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition font-bold"><i class="fas fa-paper-plane mr-2 text-green-500"></i> Criar e Enviar</button>
+                <button onclick="mudar('aba-bar')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-glass-martini-alt mr-2"></i> Bar</button>
+                <button onclick="mudar('aba-cozinha')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-utensils mr-2"></i> Cozinha</button>
+                <button onclick="mudar('aba-post')" class="w-full text-left p-3 bg-yellow-500/10 rounded border border-yellow-500/30 transition"><i class="fas fa-magic mr-2 text-yellow-500"></i> Criador Inteligente</button>
             </nav>
         </div>
-        <div class="text-xs text-slate-500 text-center border-t border-slate-700 pt-4">Gogó da Ema - 25 Anos</div>
+        <div class="text-[10px] text-slate-500 text-center uppercase tracking-widest">Gestão 25 Anos</div>
     </aside>
 
     <main class="flex-1 p-10 bg-slate-950 overflow-y-auto">
         
         <section id="aba-bar" class="aba-secao aba-ativa">
-            <h2 class="text-3xl font-bold mb-8 text-yellow-500 text-center md:text-left">Fotos do Bar</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a href="https://drive.google.com/drive/folders/1iRnxgaR8g-riNqJBbTByQ2TE2Bd4MNwi" target="_blank" class="card-foto p-12 text-center border-2 border-dashed border-yellow-500/30 flex flex-col items-center justify-center">
-                    <i class="fab fa-google-drive text-6xl text-yellow-500 mb-4"></i>
-                    <span class="text-xl font-bold">ACESSAR DRINKS</span>
-                </a>
-            </div>
+            <h2 class="text-3xl font-bold mb-8 text-yellow-500">Fotos do Bar</h2>
+            <a href="https://drive.google.com/drive/folders/1iRnxgaR8g-riNqJBbTByQ2TE2Bd4MNwi" target="_blank" class="p-20 border-2 border-dashed border-slate-700 rounded-2xl flex flex-col items-center hover:bg-slate-900 transition">
+                <i class="fab fa-google-drive text-6xl text-yellow-500 mb-4"></i>
+                <span class="text-xl font-bold">ABRIR DRIVE DO BAR</span>
+            </a>
         </section>
 
         <section id="aba-cozinha" class="aba-secao">
-            <h2 class="text-3xl font-bold mb-8 text-yellow-500 text-center md:text-left">Fotos da Cozinha</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <a href="https://drive.google.com/drive/folders/1Uyc47w1v9Y_PVPWp0KQdxe6atQuqb7HL" target="_blank" class="card-foto p-12 text-center border-2 border-dashed border-blue-500/30 flex flex-col items-center justify-center">
-                    <i class="fab fa-google-drive text-6xl text-blue-500 mb-4"></i>
-                    <span class="text-xl font-bold">ACESSAR PRATOS</span>
-                </a>
-            </div>
+            <h2 class="text-3xl font-bold mb-8 text-yellow-500">Fotos da Cozinha</h2>
+            <a href="https://drive.google.com/drive/folders/1Uyc47w1v9Y_PVPWp0KQdxe6atQuqb7HL" target="_blank" class="p-20 border-2 border-dashed border-slate-700 rounded-2xl flex flex-col items-center hover:bg-slate-900 transition">
+                <i class="fab fa-google-drive text-6xl text-blue-500 mb-4"></i>
+                <span class="text-xl font-bold">ABRIR DRIVE DA COZINHA</span>
+            </a>
         </section>
 
         <section id="aba-post" class="aba-secao">
-            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Mesa de Preparo e Envio</h2>
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
-                
-                <div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 shadow-xl">
-                    <label class="block mb-2 text-sm font-bold text-slate-400 uppercase">1. Escreva a legenda:</label>
-                    <textarea id="legenda-post" placeholder="Dica: Comece com algo marcante sobre os 25 anos do Gogó!" 
-                        class="w-full h-48 bg-slate-950 p-4 rounded-lg mb-6 text-white outline-none border border-slate-700 focus:border-yellow-500 transition"></textarea>
-                    
-                    <label class="block mb-2 text-sm font-bold text-slate-400 uppercase">2. Enviar para (DDD + Número):</label>
-                    <input type="text" id="tel-whatsapp" placeholder="Ex: 5582999999999" 
-                        class="w-full p-4 bg-slate-950 rounded-lg mb-8 border border-slate-700 text-white outline-none focus:border-green-500">
-
-                    <button onclick="enviarWhatsApp()" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-3 transition-all transform hover:scale-105">
-                        <i class="fab fa-whatsapp text-2xl"></i> ENVIAR RASCUNHO PARA WHATSAPP
-                    </button>
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-3xl font-bold text-yellow-500">Criador de Conteúdo IA</h2>
+                <div class="flex gap-4">
+                    <a href="https://www.instagram.com" target="_blank" class="bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 p-2 px-4 rounded-lg font-bold text-sm"><i class="fab fa-instagram"></i> Postar</a>
+                    <a href="https://www.facebook.com" target="_blank" class="bg-blue-600 p-2 px-4 rounded-lg font-bold text-sm"><i class="fab fa-facebook-f"></i> Postar</a>
                 </div>
-
-                <div class="bg-white p-6 rounded-[3rem] shadow-2xl text-black max-w-[350px] mx-auto border-[8px] border-slate-800">
-                    <div class="flex items-center mb-4">
-                        <div class="w-8 h-8 bg-yellow-500 rounded-full mr-3 border border-black flex items-center justify-center font-bold text-xs">G</div>
-                        <span class="font-bold text-xs">gogodaema_oficial</span>
-                    </div>
-                    <div class="bg-slate-200 h-64 rounded-sm flex flex-col items-center justify-center text-slate-400">
-                        <i class="fas fa-camera text-4xl mb-2"></i>
-                        <p class="text-[10px] uppercase font-bold tracking-widest">Foto do Drive</p>
-                    </div>
-                    <div class="py-4">
-                        <p class="text-xs leading-relaxed">
-                            <span class="font-bold">gogodaema_oficial</span> 
-                            <span id="preview-texto" class="text-slate-700 italic">Sua legenda aparecerá aqui enquanto você digita...</span>
-                        </p>
-                    </div>
-                </div>
-
             </div>
-        </section>
 
-    </main>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                    <label class="block mb-4 text-xs font-bold text-slate-500">IDEIAS RÁPIDAS (IA):</label>
+                    <div class="grid grid-cols-2 gap-2 mb-6">
+                        <button onclick="sugerir('convite')" class="text-[10px] bg-slate-800 p-2 rounded hover:bg-slate-700 transition">OPÇÃO CONVITE</button>
+                        <button onclick="sugerir('25anos')" class="text-[10px] bg-slate-800 p-2 rounded hover:bg-slate-700 transition">OPÇÃO 25 ANOS</button>
+                    </div>
+
+                    <textarea id="legenda-post" placeholder="Escreva aqui..." class="w-full h-40 bg-slate-950 p-4 rounded-lg mb-4 text-white outline-none border border-slate-800 focus:border-yellow-500"></textarea>
+                    
+                    <div class="flex gap-2">
+                        <button onclick="salvarRascunho()" class="flex-1 bg-slate-700 p-3 rounded-lg font-bold text-xs"><i class="fas fa-save mr-2"></i> SALVAR NO BAÚ</button>
+                        <button onclick="enviarWhatsApp()" class="flex-1 bg-green-600 p-3 rounded-lg font-bold text-xs"><i class="fab fa-whatsapp mr-2"></i> ENVIAR ZAP</button>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                    <h3 class="text-xs font-bold text-slate-500 mb-4 uppercase">Meu Baú de Ideias (Salvos)</h3>
+                    <div id="lista-rascunhos" class="space-y-4 max-h-64 overflow-y-auto pr-2 text-sm italic text-slate-400">
+                        Nenhum rascunho salvo ainda...
+                    </div>
+                </div>
+            </div>
+        </main>
 
     <script>
-        // Função para mudar de aba
         function mudar(id) {
             document.querySelectorAll('.aba-secao').forEach(a => a.style.display = 'none');
             document.getElementById(id).style.display = 'block';
         }
 
-        // Atualiza o preview em tempo real
-        document.getElementById('legenda-post').addEventListener('input', function(e) {
-            document.getElementById('preview-texto').innerText = e.target.value || "Sua legenda aparecerá aqui enquanto você digita...";
-        });
+        function sugerir(tipo) {
+            const campo = document.getElementById('legenda-post');
+            if(tipo === 'convite') campo.value = "Hoje o sabor do Gogó da Ema espera por você! 🍤🍹 Um ambiente acolhedor e os melhores drinks da região. Vem pro brinde!";
+            if(tipo === '25anos') campo.value = "Há 25 anos escrevendo histórias através do sabor. O Gogó da Ema celebra cada cliente que faz parte da nossa família! 🎊🍷";
+        }
 
-        // Função mágica do WhatsApp
+        function salvarRascunho() {
+            const texto = document.getElementById('legenda-post').value;
+            if(!texto) return;
+            const lista = document.getElementById('lista-rascunhos');
+            if(lista.innerText.includes("Nenhum")) lista.innerHTML = "";
+            
+            const item = document.createElement('div');
+            item.className = "p-3 bg-slate-950 rounded border-l-4 border-yellow-500 mb-2 text-xs";
+            item.innerText = texto;
+            lista.prepend(item);
+        }
+
         function enviarWhatsApp() {
             const texto = document.getElementById('legenda-post').value;
-            const tel = document.getElementById('tel-whatsapp').value.replace(/\D/g, ''); // Remove caracteres não numéricos
-
-            if (!texto || !tel) {
-                alert("Por favor, preencha a legenda e o número do WhatsApp!");
-                return;
-            }
-
-            const mensagemEncoded = encodeURIComponent("*RASCUNHO GOGÓ DA EMA - 25 ANOS*\n\n" + texto);
-            const url = `https://wa.me/${tel}?text=${mensagemEncoded}`;
-            
+            const url = `https://wa.me/?text=${encodeURIComponent("*GOGÓ DA EMA - MARKETING*\n\n" + texto)}`;
             window.open(url, '_blank');
         }
     </script>
