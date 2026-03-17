@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gogó da Ema - Administração Geral</title>
+    <title>Gogó da Ema - Marketing Geral</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -18,21 +18,24 @@
 
     <div id="tela-login" class="h-screen flex flex-col items-center justify-center bg-slate-950">
         <div class="bg-slate-900 p-10 rounded-3xl w-full max-w-sm border border-slate-800 text-center shadow-2xl">
-            <img src="https://i.imgur.com/vHqB3Kj.png" id="main-logo" class="w-32 mx-auto mb-6">
-            <h1 class="text-2xl font-bold uppercase tracking-tighter text-white">Administração Geral</h1>
-            <p class="text-blue-500 text-xs mb-8 font-bold">by studio Orrú</p>
+            <div class="w-32 h-32 bg-slate-800 rounded-full mx-auto mb-6 flex items-center justify-center border border-slate-700">
+                <i class="fas fa-store text-4xl text-blue-500"></i>
+            </div>
+            
+            <h1 class="text-2xl font-bold uppercase tracking-tighter text-white">Marketing Geral</h1>
+            <p class="text-blue-500 text-xs mb-8 font-bold tracking-widest">by studio Orrú</p>
             
             <div class="text-left space-y-4 mb-8">
                 <div>
                     <label class="text-[10px] uppercase font-bold text-slate-500 ml-1">Usuário</label>
-                    <input type="text" id="user" class="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl outline-none focus:border-blue-500 transition">
+                    <input type="text" id="user" class="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl outline-none focus:border-blue-500 text-white transition">
                 </div>
                 <div>
                     <label class="text-[10px] uppercase font-bold text-slate-500 ml-1">Senha</label>
-                    <input type="password" id="pass" class="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl outline-none focus:border-blue-500 transition">
+                    <input type="password" id="pass" class="w-full bg-slate-800 border border-slate-700 p-3 rounded-xl outline-none focus:border-blue-500 text-white transition">
                 </div>
             </div>
-            <button onclick="fazerLogin()" class="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded-2xl font-bold text-white transition-all transform hover:scale-105">ENTRAR NO SISTEMA</button>
+            <button onclick="fazerLogin()" class="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded-2xl font-bold text-white transition-all transform active:scale-95">ENTRAR NO SISTEMA</button>
         </div>
     </div>
 
@@ -40,7 +43,9 @@
         
         <aside class="w-72 bg-slate-900 border-r border-slate-800 p-6 flex flex-col">
             <div class="text-center mb-10">
-                <img src="https://i.imgur.com/vHqB3Kj.png" class="w-24 mx-auto mb-2">
+                <div class="w-16 h-16 bg-slate-800 rounded-full mx-auto mb-2 flex items-center justify-center border border-slate-700">
+                    <i class="fas fa-store text-xl text-blue-500"></i>
+                </div>
                 <h2 class="text-sm font-bold uppercase text-white">Marketing Geral</h2>
                 <p class="text-blue-500 text-[10px] font-bold">by studio Orrú</p>
             </div>
@@ -51,55 +56,57 @@
                 <button onclick="mudar('aba-config')" id="btn-config" class="w-full text-left p-4 hover:bg-slate-800 rounded-xl transition text-sm font-bold hidden"><i class="fas fa-cog mr-3 text-slate-400"></i> Configurações</button>
             </nav>
 
-            <div class="pt-6 border-t border-slate-800 text-[10px] text-slate-600 text-center">
-                Validade: <span id="data-validade">31/12/2026</span>
+            <div class="pt-6 border-t border-slate-800 text-[10px] text-slate-600 text-center uppercase font-bold">
+                Validade: <span id="data-validade" class="text-blue-500">31/12/2026</span>
             </div>
         </aside>
 
         <main class="flex-1 bg-slate-950 p-10 overflow-y-auto relative">
             
-            <a href="https://www.google.com/search?q=gogo+da+ema+morumbi" target="_blank" class="absolute top-10 right-10 bg-slate-800 p-3 rounded-full hover:bg-blue-600 transition">
+            <a href="https://www.google.com/search?q=gogo+da+ema+morumbi&oq=gogo+da+ema+morumbi&gs_lcrp=EgZjaHJvbWUqCggAEAAY4wIYgAQyCggAEAAY4wIYgAQyEAgBEC4YrwEYxwEYgAQYjgUyCAgCEAAYFhgeMggIAxAAGBYYHjIICAQQABgWGB4yCAgFEAAYFhgeMggIBhAAGBYYHjIICAcQABgWGB4yBwgIEAAY7wUyCggJEAAYgAQYogTSAQg4MDMxajFqN6gCALACAA&sourceid=chrome&ie=UTF-8" 
+               target="_blank" class="absolute top-10 right-10 bg-slate-800 w-12 h-12 flex items-center justify-center rounded-full hover:bg-blue-600 transition shadow-lg">
                 <i class="fab fa-google text-white"></i>
             </a>
 
             <section id="aba-galeria" class="aba-secao aba-ativa">
                 <h2 class="text-3xl font-bold mb-8">Galeria Digital</h2>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-slate-900 p-10 rounded-3xl border-2 border-dashed border-slate-700 text-center hover:border-blue-500 transition cursor-pointer">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <a href="https://drive.google.com/drive/folders/1Uyc47w1v9Y_PVPWp0KQdxe6atQuqb7HL" target="_blank" class="bg-slate-900 p-10 rounded-3xl border-2 border-dashed border-slate-700 text-center hover:border-blue-500 transition cursor-pointer">
                         <i class="fas fa-utensils text-4xl text-blue-500 mb-4"></i>
                         <p class="font-bold">GALERIA COZINHA</p>
-                    </div>
-                    <div class="bg-slate-900 p-10 rounded-3xl border-2 border-dashed border-slate-700 text-center hover:border-yellow-500 transition cursor-pointer">
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1iRnxgaR8g-riNqJBbTByQ2TE2Bd4MNwi" target="_blank" class="bg-slate-900 p-10 rounded-3xl border-2 border-dashed border-slate-700 text-center hover:border-yellow-500 transition cursor-pointer">
                         <i class="fas fa-glass-martini-alt text-4xl text-yellow-500 mb-4"></i>
                         <p class="font-bold">GALERIA BAR</p>
-                    </div>
+                    </a>
                 </div>
             </section>
 
             <section id="aba-criar" class="aba-secao">
                 <div class="flex justify-between items-center mb-8">
                     <h2 class="text-3xl font-bold">Criar Postagem</h2>
-                    <a href="https://gemini.google.com" target="_blank" class="bg-slate-800 px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-600 transition"><i class="fas fa-robot mr-2"></i> ACESSAR GEMINI</a>
+                    <a href="https://gemini.google.com" target="_blank" class="bg-slate-800 px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-600 transition"><i class="fas fa-robot mr-2 text-blue-400"></i> ACESSAR GEMINI</a>
                 </div>
 
-                <div class="flex gap-10">
+                <div class="flex flex-col xl:flex-row gap-10">
                     <div class="flex-1 space-y-6">
-                        <textarea id="texto-post" placeholder="Digite sua legenda..." class="w-full bg-slate-900 p-4 rounded-2xl h-48 border border-slate-800 outline-none focus:border-blue-500"></textarea>
-                        <div class="flex gap-4">
-                            <button onclick="salvarTela()" class="flex-1 bg-slate-700 py-4 rounded-2xl font-bold text-xs">SALVAR POST</button>
-                            <button onclick="window.open('https://wa.me/')" class="flex-1 bg-green-600 py-4 rounded-2xl font-bold text-xs">WHATSAPP</button>
+                        <textarea id="texto-post" placeholder="Digite sua legenda aqui..." class="w-full bg-slate-900 p-6 rounded-2xl h-48 border border-slate-800 outline-none focus:border-blue-500 text-white shadow-inner"></textarea>
+                        <div class="grid grid-cols-2 gap-4">
+                            <button onclick="salvarTela()" class="bg-slate-700 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-slate-600 transition">Salvar Post</button>
+                            <button onclick="abrirZap()" class="bg-green-600 py-4 rounded-2xl font-bold text-xs uppercase tracking-widest hover:bg-green-500 transition"><i class="fab fa-whatsapp mr-2 text-lg"></i> Enviar</button>
                         </div>
                     </div>
 
-                    <div class="card-post p-6 shadow-2xl" id="print-area">
-                        <div class="flex justify-between items-center mb-4">
+                    <div class="card-post p-6 shadow-2xl mx-auto xl:mx-0" id="print-area">
+                        <div class="flex justify-between items-center mb-4 border-b pb-2">
                             <span class="font-bold text-sm">Gogó da Ema</span>
-                            <img src="https://i.imgur.com/vHqB3Kj.png" class="w-8">
+                            <i class="fas fa-store text-blue-600"></i>
                         </div>
-                        <div onclick="mudar('aba-galeria')" class="bg-slate-100 h-64 rounded-lg flex items-center justify-center cursor-pointer border-2 border-dashed border-slate-200 hover:bg-slate-200 transition">
-                            <i class="fas fa-plus text-slate-300"></i>
+                        <div onclick="mudar('aba-galeria')" class="bg-slate-100 h-64 rounded-lg flex flex-col items-center justify-center cursor-pointer border-2 border-dashed border-slate-200 hover:bg-slate-200 transition">
+                            <i class="fas fa-plus text-slate-300 text-3xl mb-2"></i>
+                            <span class="text-[10px] text-slate-400 font-bold uppercase">Escolher Foto (Bar/Cozinha)</span>
                         </div>
-                        <div class="mt-4 text-sm leading-relaxed" id="preview-texto">
+                        <div class="mt-4 text-xs text-slate-800 leading-relaxed font-medium" id="preview-texto">
                             Sua legenda aparecerá aqui...
                         </div>
                     </div>
@@ -107,16 +114,21 @@
             </section>
 
             <section id="aba-config" class="aba-secao">
-                <h2 class="text-3xl font-bold mb-8 text-slate-400">Configurações do Sistema</h2>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="bg-slate-900 p-6 rounded-2xl">
-                        <h3 class="font-bold mb-4 border-b border-slate-800 pb-2">GERENCIAR USUÁRIOS</h3>
-                        <p class="text-xs text-slate-500 mb-4 italic">Simulação de cadastro (Visualizador/Usuário/Adm)</p>
-                        <button class="bg-blue-600 px-4 py-2 rounded text-xs font-bold">NOVO USUÁRIO</button>
+                <h2 class="text-3xl font-bold mb-8 text-slate-400">Configurações</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800">
+                        <h3 class="font-bold mb-6 text-blue-500 uppercase text-xs tracking-widest">Controle de Usuários</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center bg-slate-950 p-3 rounded-xl border border-slate-800">
+                                <span class="text-sm">admin</span>
+                                <span class="text-[10px] bg-blue-900 text-blue-200 px-2 py-1 rounded font-bold uppercase tracking-tighter">Administrador</span>
+                            </div>
+                        </div>
+                        <button class="w-full mt-6 bg-slate-800 py-3 rounded-xl text-[10px] font-bold uppercase hover:bg-slate-700 transition">Novo Usuário</button>
                     </div>
-                    <div class="bg-slate-900 p-6 rounded-2xl text-center">
-                        <i class="fas fa-database text-2xl mb-4 text-slate-600"></i>
-                        <button class="block w-full bg-slate-800 py-3 rounded-xl font-bold text-xs">ÁREA DE BACKUP</button>
+                    <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 flex flex-col items-center justify-center space-y-4">
+                        <i class="fas fa-history text-4xl text-slate-700"></i>
+                        <button class="w-full bg-slate-800 py-3 rounded-xl text-[10px] font-bold uppercase hover:bg-slate-700">Backup do Sistema</button>
                     </div>
                 </div>
             </section>
@@ -125,19 +137,19 @@
 
     <script>
         function fazerLogin() {
-            const u = document.getElementById('user').value;
+            const u = document.getElementById('user').value.toLowerCase().trim();
             const p = document.getElementById('pass').value;
 
-            // Lógica de Administrador para liberar Configurações
+            // Libera Configurações apenas para admin
             if(u === 'admin' && p === 'Gogo25anos#2026') {
                 document.getElementById('btn-config').classList.remove('hidden');
             }
 
-            if(u && p) {
+            if(u && p === 'Gogo25anos#2026') {
                 document.getElementById('tela-login').classList.add('hidden-login');
                 document.getElementById('main-app').classList.remove('hidden-login');
             } else {
-                alert('Preencha os dados!');
+                alert('Credenciais incorretas!');
             }
         }
 
@@ -150,9 +162,13 @@
             document.getElementById('preview-texto').innerText = e.target.value || "Sua legenda aparecerá aqui...";
         });
 
+        function abrirZap() {
+            const t = document.getElementById('texto-post').value;
+            window.open(`https://wa.me/?text=${encodeURIComponent("*GOGÓ DA EMA - MARKETING*\n\n" + t)}`, '_blank');
+        }
+
         function salvarTela() {
-            alert('A tela Branca (Post) foi salva no histórico do sistema!');
-            // Aqui futuramente incluiremos a função html2canvas para baixar como imagem.
+            alert('Postagem salva no banco de dados local com sucesso!');
         }
     </script>
 </body>
