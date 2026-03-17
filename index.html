@@ -9,76 +9,64 @@
     <style>
         body { background-color: #0f172a; color: #f8fafc; font-family: sans-serif; }
         .sidebar { background: #1e293b; border-right: 1px solid #334155; }
-        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
-        .btn-gold { background: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; }
-        .hidden-section { display: none; }
+        .card-foto { background: #1e293b; border-radius: 12px; overflow: hidden; border: 1px solid #334155; transition: 0.3s; }
+        .card-foto:hover { transform: translateY(-5px); border-color: #fbbf24; }
+        .aba-secao { display: none; }
+        .aba-ativa { display: block; }
     </style>
 </head>
 <body class="h-screen flex">
+
     <aside class="w-64 sidebar p-6 flex flex-col justify-between">
         <div>
-            <h2 class="text-xl font-bold text-yellow-500 mb-10 text-center">Gogó RMM</h2>
-            <nav class="space-y-4">
-                <button onclick="mudarAba('galeria')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-images mr-2 text-yellow-500"></i> Galeria</button>
-                <button onclick="mudarAba('post')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-plus-circle mr-2 text-yellow-500"></i> Criar Post</button>
-                <button onclick="mudarAba('calendario')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-calendar-alt mr-2 text-yellow-500"></i> Agendamentos</button>
+            <h2 class="text-2xl font-bold text-yellow-500 mb-10 text-center">Gogó RMM</h2>
+            <nav class="space-y-2">
+                <button onclick="mudar('aba-bar')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition font-bold"><i class="fas fa-glass-martini-alt mr-2 text-yellow-500"></i> Fotos do Bar</button>
+                <button onclick="mudar('aba-cozinha')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition font-bold"><i class="fas fa-utensils mr-2 text-yellow-500"></i> Fotos da Cozinha</button>
+                <button onclick="mudar('aba-post')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-edit mr-2"></i> Criar Post</button>
             </nav>
         </div>
-        <div class="text-xs text-slate-500 text-center">Gastrobar Gogó da Ema<br>25 Anos de Sucesso</div>
+        <div class="text-xs text-slate-500 text-center border-t border-slate-700 pt-4">Gogó da Ema - 25 Anos</div>
     </aside>
 
-    <main class="flex-1 p-10 overflow-y-auto bg-slate-950">
+    <main class="flex-1 p-10 bg-slate-950 overflow-y-auto">
         
-        <section id="aba-galeria">
-            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Minha Galeria de Fotos</h2>
-            <div class="grid grid-cols-3 gap-6">
-                <div class="card p-10 text-center border-dashed border-2 border-slate-700 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-800 transition h-64">
-                    <i class="fas fa-cloud-upload-alt text-4xl text-yellow-500 mb-4"></i>
-                    <p class="text-slate-400 font-bold">Clique para subir<br>as fotos do restaurante</p>
-                </div>
-                <div class="card overflow-hidden group">
-                    <div class="h-48 bg-slate-800 flex items-center justify-center text-slate-600 italic text-sm">Espaço para sua foto</div>
-                    <div class="p-3 bg-slate-900 text-xs flex justify-between">
-                        <span>PRATO_PRINCIPAL.JPG</span>
-                        <i class="fas fa-check-circle text-green-500"></i>
-                    </div>
-                </div>
+        <section id="aba-bar" class="aba-secao aba-ativa">
+            <h2 class="text-3xl font-bold mb-8 text-yellow-500">Drinks e Balcão</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="https://drive.google.com/drive/folders/1iRnxgaR8g-riNqJBbTByQ2TE2Bd4MNwi" target="_blank" class="card-foto p-10 text-center border-2 border-dashed border-yellow-500/30 flex flex-col items-center justify-center">
+                    <i class="fab fa-google-drive text-5xl text-yellow-500 mb-4"></i>
+                    <span class="font-bold">ABRIR PASTA DO BAR</span>
+                    <p class="text-xs text-slate-400 mt-2">Clique para escolher a foto do drink</p>
+                </a>
             </div>
         </section>
 
-        <section id="aba-post" class="hidden-section">
+        <section id="aba-cozinha" class="aba-secao">
+            <h2 class="text-3xl font-bold mb-8 text-yellow-500">Pratos e Delícias</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="https://drive.google.com/drive/folders/1Uyc47w1v9Y_PVPWp0KQdxe6atQuqb7HL" target="_blank" class="card-foto p-10 text-center border-2 border-dashed border-blue-500/30 flex flex-col items-center justify-center">
+                    <i class="fab fa-google-drive text-5xl text-blue-500 mb-4"></i>
+                    <span class="font-bold">ABRIR PASTA DA COZINHA</span>
+                    <p class="text-xs text-slate-400 mt-2">Clique para escolher a foto do prato</p>
+                </a>
+            </div>
+        </section>
+
+        <section id="aba-post" class="aba-secao">
             <h2 class="text-3xl font-bold mb-6 text-yellow-500">Mesa de Preparo</h2>
             <div class="grid grid-cols-2 gap-10">
-                <div class="card p-6">
-                    <label class="block mb-2 text-sm font-bold">Legenda do Instagram:</label>
-                    <textarea placeholder="Hoje no Gogó da Ema..." class="w-full h-40 bg-slate-800 p-4 rounded mb-4 outline-none border border-slate-700 focus:border-yellow-500"></textarea>
-                    <button class="btn-gold w-full py-3 rounded-lg">PREPARAR POSTAGEM</button>
+                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <textarea placeholder="Escreva aqui o post do dia..." class="w-full h-40 bg-slate-950 p-4 rounded mb-4 text-white outline-none border border-slate-700"></textarea>
+                    <button class="w-full bg-yellow-500 text-black font-bold py-3 rounded-lg hover:bg-yellow-400">GERAR LEGENDA COM IA</button>
                 </div>
-                <div class="card p-6 bg-white text-black rounded-xl max-w-sm mx-auto shadow-2xl">
-                    <div class="flex items-center mb-3">
-                        <div class="w-8 h-8 bg-yellow-500 rounded-full mr-3 border border-black text-center text-xs font-bold pt-1.5">G</div>
-                        <span class="font-bold text-sm">gogodaema_oficial</span>
+                <div class="bg-white p-6 rounded-3xl shadow-2xl text-black max-w-sm mx-auto">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 bg-yellow-500 rounded-full mr-3 border border-black flex items-center justify-center font-bold">G</div>
+                        <span class="font-bold">gogodaema_oficial</span>
                     </div>
-                    <div class="bg-slate-200 h-64 w-full rounded flex items-center justify-center text-slate-400 italic">Preview Real Time</div>
-                    <p class="mt-3 text-sm"><b>gogodaema_oficial</b> O presente dos 25 anos é para você!</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="aba-calendario" class="hidden-section">
-            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Agenda de Março</h2>
-            <div class="card p-6">
-                <div class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-slate-500 mb-4">
-                    <span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SAB</span>
-                </div>
-                <div class="grid grid-cols-7 gap-2 h-64">
-                    <div class="border border-slate-800 rounded p-2 text-xs">10</div>
-                    <div class="border border-slate-800 rounded p-2 text-xs">11</div>
-                    <div class="border border-slate-800 rounded p-2 text-xs">12</div>
-                    <div class="bg-yellow-500/20 border border-yellow-500 rounded p-2 text-xs text-yellow-500 font-bold">13 (MARCO FARIAS)</div>
-                    <div class="border border-slate-800 rounded p-2 text-xs">14</div>
-                    <div class="border border-slate-800 rounded p-2 text-xs">15</div>
-                    <div class="bg-blue-500/20 border border-blue-500 rounded p-2 text-xs text-blue-400 font-bold italic">16 (HOJE)</div>
+                    <div class="bg-slate-100 h-64 rounded-lg flex items-center justify-center text-slate-400 italic">Preview da Foto Selecionada</div>
+                    <p class="mt-4 text-sm"><b>gogodaema_oficial</b> Celebrando 25 anos de sabor!</p>
                 </div>
             </div>
         </section>
@@ -86,14 +74,9 @@
     </main>
 
     <script>
-        function mudarAba(aba) {
-            document.getElementById('aba-galeria').classList.add('hidden-section');
-            document.getElementById('aba-post').classList.add('hidden-section');
-            document.getElementById('aba-calendario').classList.add('hidden-section');
-            
-            if(aba === 'galeria') document.getElementById('aba-galeria').classList.remove('hidden-section');
-            if(aba === 'post') document.getElementById('aba-post').classList.remove('hidden-section');
-            if(aba === 'calendario') document.getElementById('aba-calendario').classList.remove('hidden-section');
+        function mudar(id) {
+            document.querySelectorAll('.aba-secao').forEach(a => a.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
         }
     </script>
 </body>
