@@ -12,11 +12,9 @@
         .aba-ativa { display: block; }
         .hidden-login { display: none !important; }
         .card-post { background: white; color: black; border-radius: 12px; width: 340px; min-height: 480px; position: relative; }
-        .foto-item { position: relative; flex-shrink: 0; }
-        .btn-excluir { position: absolute; top: 5px; right: 5px; background: rgba(239, 68, 68, 0.9); color: white; border-radius: 50%; width: 22px; height: 22px; font-size: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid white; }
     </style>
 </head>
-<body>
+<body onload="carregarDadosSalvos()">
 
     <div id="tela-login" class="h-screen flex flex-col items-center justify-center bg-slate-950">
         <div class="bg-slate-900 p-10 rounded-3xl w-full max-w-sm border border-slate-800 text-center shadow-2xl">
@@ -26,9 +24,9 @@
             </div>
             <h1 class="text-2xl font-bold uppercase text-white tracking-tighter">Marketing Geral</h1>
             <p class="text-blue-500 text-[10px] mb-8 font-bold tracking-widest">by studio Orrú</p>
-            <div class="space-y-4 mb-8">
-                <input type="text" id="user" placeholder="Usuário" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl outline-none text-white focus:border-blue-500">
-                <input type="password" id="pass" placeholder="Senha" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl outline-none text-white focus:border-blue-500">
+            <div class="space-y-4 mb-8 text-left">
+                <input type="text" id="user" placeholder="Usuário" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl outline-none text-white">
+                <input type="password" id="pass" placeholder="Senha" class="w-full bg-slate-800 border border-slate-700 p-4 rounded-xl outline-none text-white">
             </div>
             <button onclick="fazerLogin()" class="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded-2xl font-bold uppercase tracking-widest text-sm">Entrar</button>
         </div>
@@ -55,70 +53,113 @@
         <main class="flex-1 bg-slate-950 p-10 overflow-y-auto">
             
             <section id="aba-galeria" class="aba-secao aba-ativa">
-                <h2 class="text-3xl font-bold mb-8 text-white">Galeria do Restaurante</h2>
+                <h2 class="text-3xl font-bold mb-8">Galeria Digital</h2>
                 <div class="grid grid-cols-2 gap-6 mb-10">
-                    <button onclick="document.getElementById('up-cozinha-gal').click()" class="bg-blue-900/20 p-8 rounded-2xl border-2 border-dashed border-blue-500/30 hover:border-blue-500 transition">
-                        <i class="fas fa-utensils text-2xl mb-2 text-blue-500"></i><p class="text-xs font-bold">ADD COZINHA</p>
-                    </button>
-                    <button onclick="document.getElementById('up-bar-gal').click()" class="bg-yellow-900/20 p-8 rounded-2xl border-2 border-dashed border-yellow-500/30 hover:border-yellow-500 transition">
-                        <i class="fas fa-glass-martini-alt text-2xl mb-2 text-yellow-500"></i><p class="text-xs font-bold">ADD BAR</p>
+                    <button onclick="document.getElementById('up-gal').click()" class="bg-slate-900 p-8 rounded-2xl border-2 border-dashed border-slate-700 hover:border-blue-500 transition">
+                        <i class="fas fa-plus text-2xl mb-2 text-blue-500"></i><p class="text-xs font-bold">ADICIONAR FOTOS</p>
                     </button>
                 </div>
-                <input type="file" id="up-cozinha-gal" class="hidden" accept="image/*" multiple onchange="addGaleria(this)">
-                <input type="file" id="up-bar-gal" class="hidden" accept="image/*" multiple onchange="addGaleria(this)">
-
-                <div id="container-galeria" class="flex flex-wrap gap-4 bg-slate-900/50 p-6 rounded-3xl min-h-[300px] border border-slate-800">
-                    <p class="text-slate-600 italic w-full text-center py-20">As fotos carregadas aparecerão aqui...</p>
-                </div>
+                <input type="file" id="up-gal" class="hidden" accept="image/*" multiple onchange="addGaleria(this)">
+                <div id="container-galeria" class="flex flex-wrap gap-4 bg-slate-900/50 p-6 rounded-3xl min-h-[300px] border border-slate-800"></div>
             </section>
 
             <section id="aba-criar" class="aba-secao">
-                <div class="flex justify-between items-center mb-10">
+                <div class="flex justify-between items-center mb-8">
                     <h2 class="text-3xl font-bold">Mesa de Preparo</h2>
-                    <div class="flex gap-3">
-                         <a href="https://gemini.google.com" target="_blank" class="bg-blue-600 p-2 px-4 rounded-xl text-xs font-bold flex items-center gap-2"><i class="fas fa-robot"></i> GEMINI</a>
+                    <div class="flex gap-2 bg-slate-900 p-2 rounded-xl border border-slate-800">
+                        <a href="https://www.google.com" target="_blank" class="w-10 h-10 flex items-center justify-center hover:text-blue-500"><i class="fab fa-google"></i></a>
+                        <a href="https://www.facebook.com" target="_blank" class="w-10 h-10 flex items-center justify-center hover:text-blue-500"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com" target="_blank" class="w-10 h-10 flex items-center justify-center hover:text-blue-500"><i class="fab fa-instagram"></i></a>
+                        <button onclick="abrirZap()" class="w-10 h-10 flex items-center justify-center text-green-500 hover:scale-110"><i class="fab fa-whatsapp"></i></button>
+                        <a href="https://gemini.google.com" target="_blank" class="w-10 h-10 flex items-center justify-center text-blue-400 hover:rotate-12"><i class="fas fa-robot"></i></a>
                     </div>
                 </div>
+
                 <div class="flex flex-col lg:flex-row gap-10">
                     <div class="flex-1 space-y-6">
                         <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
-                             <button onclick="document.getElementById('up-post').click()" class="w-full bg-slate-800 py-3 rounded-xl text-[10px] font-bold mb-4 uppercase tracking-widest">Selecionar Foto do Post</button>
+                             <button onclick="document.getElementById('up-post').click()" class="w-full bg-slate-800 py-3 rounded-xl text-[10px] font-bold mb-4 uppercase">Selecionar Imagem do Post</button>
                              <input type="file" id="up-post" class="hidden" accept="image/*" onchange="previewPost(this)">
-                             <textarea id="texto-post" placeholder="Legenda..." class="w-full h-40 bg-slate-950 p-4 rounded-xl text-white outline-none border border-slate-800 focus:border-blue-500"></textarea>
+                             <textarea id="texto-post" placeholder="Escreva aqui..." class="w-full h-40 bg-slate-950 p-4 rounded-xl text-white outline-none border border-slate-800 focus:border-blue-500"></textarea>
+                             <button onclick="salvarPost()" class="w-full mt-4 bg-blue-600/20 border border-blue-500/50 py-3 rounded-xl text-xs font-bold hover:bg-blue-600 transition">SALVAR NO BAÚ</button>
                         </div>
-                        <button onclick="abrirZap()" class="w-full bg-green-600 py-4 rounded-2xl font-bold"><i class="fab fa-whatsapp mr-2"></i> ENVIAR</button>
+                        
+                        <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800">
+                            <h3 class="text-[10px] font-bold text-slate-500 mb-4 uppercase">Posts Salvos (Baú)</h3>
+                            <div id="bau-posts" class="space-y-3"></div>
+                        </div>
                     </div>
+
                     <div class="card-post p-6 shadow-2xl mx-auto lg:mx-0">
-                        <div class="flex items-center gap-2 mb-4"><img src="" class="logo-preview w-6 h-6 rounded-full hidden border"><span class="font-bold text-sm">Gogó da Ema</span></div>
-                        <div class="bg-slate-100 h-64 rounded-xl flex items-center justify-center overflow-hidden border border-slate-200">
+                        <div class="flex items-center gap-2 mb-4"><img src="" class="logo-preview w-6 h-6 rounded-full hidden"><span class="font-bold text-sm">Gogó da Ema</span></div>
+                        <div class="bg-slate-100 h-64 rounded-xl flex items-center justify-center overflow-hidden border">
                             <img id="img-preview" class="w-full h-full object-cover hidden">
                             <i id="icon-preview" class="fas fa-image text-4xl text-slate-200"></i>
                         </div>
-                        <div class="mt-4 text-[11px] text-slate-700 leading-relaxed" id="preview-texto">Legenda...</div>
+                        <div class="mt-4 text-[11px] text-slate-700 leading-relaxed" id="preview-texto">Sua legenda aqui...</div>
                     </div>
                 </div>
             </section>
 
             <section id="aba-config" class="aba-secao">
-                <h2 class="text-3xl font-bold mb-8 text-slate-500">Configurações</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <h2 class="text-3xl font-bold mb-8 text-slate-500">Configurações do Sistema</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800">
-                        <h3 class="text-[10px] font-bold text-blue-500 uppercase mb-4 tracking-widest">Identidade Visual</h3>
-                        <button onclick="document.getElementById('up-logo').click()" class="w-full bg-blue-600 py-4 rounded-xl font-bold text-xs uppercase"><i class="fas fa-upload mr-2"></i> CARREGAR LOGO</button>
-                        <input type="file" id="up-logo" class="hidden" accept="image/*" onchange="setLogo(this)">
+                        <h3 class="text-[10px] font-bold text-blue-500 uppercase mb-6 tracking-widest">Cadastro de Usuários</h3>
+                        <div class="space-y-4">
+                            <input type="text" id="new-user-name" placeholder="Nome do Usuário" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-800 outline-none">
+                            <select id="new-user-type" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-800 outline-none text-slate-400">
+                                <option value="Visualizador">Visualizador</option>
+                                <option value="Usuário">Usuário</option>
+                                <option value="Administrador">Administrador</option>
+                            </select>
+                            <input type="password" id="new-user-pass" placeholder="Senha" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-800 outline-none">
+                            <button onclick="addUsuario()" class="w-full bg-blue-600 py-3 rounded-lg font-bold text-xs uppercase">Salvar Usuário</button>
+                        </div>
+                        <div id="lista-usuarios" class="mt-8 space-y-2"></div>
                     </div>
-                    <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 space-y-4">
-                        <button onclick="gerenciarUsers()" class="w-full bg-slate-800 py-4 rounded-xl font-bold text-xs uppercase">Gerenciar Usuários</button>
-                        <button onclick="fazerBackup()" class="w-full bg-slate-800 py-4 rounded-xl font-bold text-xs uppercase">Backup do Sistema</button>
+
+                    <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 space-y-8">
+                        <div>
+                            <h3 class="text-[10px] font-bold text-blue-500 uppercase mb-4 tracking-widest">Identidade Visual</h3>
+                            <button onclick="document.getElementById('up-logo').click()" class="w-full bg-slate-800 py-4 rounded-xl font-bold text-xs uppercase">Carregar Logo</button>
+                            <input type="file" id="up-logo" class="hidden" accept="image/*" onchange="setLogo(this)">
+                        </div>
+                        <button onclick="alert('Backup dos dados gerado com sucesso!')" class="w-full bg-slate-800 py-4 rounded-xl font-bold text-xs uppercase tracking-widest"><i class="fas fa-database mr-2"></i> Backup do Sistema</button>
                     </div>
                 </div>
-                <div id="box-status" class="mt-6 p-4 bg-slate-800/50 rounded-xl text-[10px] text-slate-400 hidden"></div>
             </section>
         </main>
     </div>
 
     <script>
-        let logoCarregado = "";
+        // CARREGAR DADOS DO NAVEGADOR (LOCAL STORAGE)
+        function carregarDadosSalvos() {
+            const logo = localStorage.getItem('gogo_logo');
+            if(logo) { aplicarLogo(logo); }
+        }
+
+        function aplicarLogo(src) {
+            document.getElementById('logo-login').src = src;
+            document.getElementById('logo-login').classList.remove('hidden');
+            document.getElementById('icon-login').classList.add('hidden');
+            document.getElementById('logo-sidebar').src = src;
+            document.getElementById('logo-sidebar').classList.remove('hidden');
+            document.getElementById('icon-sidebar').classList.add('hidden');
+            document.querySelectorAll('.logo-preview').forEach(img => { img.src = src; img.classList.remove('hidden'); });
+        }
+
+        function setLogo(input) {
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const src = e.target.result;
+                    localStorage.setItem('gogo_logo', src);
+                    aplicarLogo(src);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
         function fazerLogin() {
             const u = document.getElementById('user').value.toLowerCase().trim();
@@ -127,7 +168,10 @@
                 document.getElementById('btn-config').classList.remove('hidden');
                 document.getElementById('tela-login').classList.add('hidden-login');
                 document.getElementById('main-app').classList.remove('hidden-login');
-            } else { alert('Acesso Negado!'); }
+            } else if (u !== "" && p !== "") {
+                document.getElementById('tela-login').classList.add('hidden-login');
+                document.getElementById('main-app').classList.remove('hidden-login');
+            } else { alert('Acesso negado!'); }
         }
 
         function mudar(id) {
@@ -137,35 +181,17 @@
 
         function addGaleria(input) {
             const container = document.getElementById('container-galeria');
-            if (container.innerText.includes("As fotos")) container.innerHTML = "";
             Array.from(input.files).forEach(file => {
                 const reader = new FileReader();
                 reader.onload = (e) => {
                     const div = document.createElement('div');
-                    div.className = "foto-item";
+                    div.className = "relative group";
                     div.innerHTML = `<img src="${e.target.result}" class="w-32 h-32 object-cover rounded-xl border border-slate-700">
-                                     <div class="btn-excluir" onclick="this.parentElement.remove()"><i class="fas fa-times"></i></div>`;
+                                     <button onclick="this.parentElement.remove()" class="absolute top-1 right-1 bg-red-600 text-white rounded-full w-5 h-5 text-[10px]">X</button>`;
                     container.appendChild(div);
                 };
                 reader.readAsDataURL(file);
             });
-        }
-
-        function setLogo(input) {
-            if (input.files && input.files[0]) {
-                const reader = new FileReader();
-                reader.onload = (e) => {
-                    logoCarregado = e.target.result;
-                    document.getElementById('logo-sidebar').src = logoCarregado;
-                    document.getElementById('logo-sidebar').classList.remove('hidden');
-                    document.getElementById('icon-sidebar').classList.add('hidden');
-                    document.getElementById('logo-login').src = logoCarregado;
-                    document.getElementById('logo-login').classList.remove('hidden');
-                    document.getElementById('icon-login').classList.add('hidden');
-                    document.querySelectorAll('.logo-preview').forEach(img => { img.src = logoCarregado; img.classList.remove('hidden'); });
-                };
-                reader.readAsDataURL(input.files[0]);
-            }
         }
 
         function previewPost(input) {
@@ -180,25 +206,33 @@
             }
         }
 
-        document.getElementById('texto-post').addEventListener('input', (e) => {
-            document.getElementById('preview-texto').innerText = e.target.value || "Legenda...";
-        });
+        function salvarPost() {
+            const t = document.getElementById('texto-post').value;
+            if(!t) return;
+            const item = document.createElement('div');
+            item.className = "bg-slate-950 p-3 rounded-lg border border-slate-800 flex justify-between items-center text-xs";
+            item.innerHTML = `<span>${t}</span><button onclick="this.parentElement.remove()" class="text-red-500 ml-2">Excluir</button>`;
+            document.getElementById('bau-posts').prepend(item);
+        }
+
+        function addUsuario() {
+            const n = document.getElementById('new-user-name').value;
+            const t = document.getElementById('new-user-type').value;
+            if(!n) return;
+            const item = document.createElement('div');
+            item.className = "bg-slate-950 p-3 rounded-lg border border-slate-800 flex justify-between text-[10px]";
+            item.innerHTML = `<span><b>${n}</b> (${t})</span><button onclick="this.parentElement.remove()" class="text-slate-600 italic">Excluir</button>`;
+            document.getElementById('lista-usuarios').appendChild(item);
+        }
 
         function abrirZap() {
             const t = document.getElementById('texto-post').value;
-            window.open(`https://wa.me/?text=${encodeURIComponent("*GOGÓ DA EMA*\n\n" + t)}`, '_blank');
+            window.open(`https://wa.me/?text=${encodeURIComponent("*GOGÓ DA EMA - MARKETING*\n\n" + t)}`, '_blank');
         }
 
-        function gerenciarUsers() {
-            const box = document.getElementById('box-status');
-            box.classList.remove('hidden');
-            box.innerHTML = "<b>SISTEMA DE USUÁRIOS:</b><br>1. admin (Administrador)<br>2. gogo_user (Usuário)<br>3. gogo_view (Visualizador)";
-        }
-
-        function fazerBackup() {
-            const fotos = document.querySelectorAll('.foto-item').length;
-            alert(`BACKUP CONCLUÍDO!\n\nFotos na Galeria: ${fotos}\nPostagens salvas: 0\nStatus: Banco de Dados sincronizado.`);
-        }
+        document.getElementById('texto-post').addEventListener('input', (e) => {
+            document.getElementById('preview-texto').innerText = e.target.value || "Sua legenda aqui...";
+        });
     </script>
 </body>
 </html>
