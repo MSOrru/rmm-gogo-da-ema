@@ -1,35 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>RMM - Gogo da Ema</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMM - Marketing Gogó da Ema</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { background-color: #0f172a; color: #f8fafc; }
-        .escondido { display: none; }
+        body { background-color: #0f172a; color: #f8fafc; font-family: sans-serif; }
+        .sidebar { background: #1e293b; border-right: 1px solid #334155; }
+        .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; }
+        .btn-gold { background: #fbbf24; color: #000; font-weight: bold; transition: 0.3s; }
+        .hidden-section { display: none; }
     </style>
 </head>
-<body>
-    <div id="tela-login" class="h-screen flex items-center justify-center">
-        <div class="bg-slate-800 p-8 rounded-xl w-full max-w-md text-center border border-slate-700">
-            <h1 class="text-3xl font-bold text-yellow-500 mb-6">Gogó da Ema</h1>
-            <button onclick="liberar()" class="w-full bg-yellow-500 text-black font-bold py-4 rounded-lg">
-                ENTRAR NO PAINEL
-            </button>
+<body class="h-screen flex">
+    <aside class="w-64 sidebar p-6 flex flex-col justify-between">
+        <div>
+            <h2 class="text-xl font-bold text-yellow-500 mb-10 text-center">Gogó RMM</h2>
+            <nav class="space-y-4">
+                <button onclick="mudarAba('galeria')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-images mr-2 text-yellow-500"></i> Galeria</button>
+                <button onclick="mudarAba('post')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-plus-circle mr-2 text-yellow-500"></i> Criar Post</button>
+                <button onclick="mudarAba('calendario')" class="w-full text-left p-3 hover:bg-slate-700 rounded transition"><i class="fas fa-calendar-alt mr-2 text-yellow-500"></i> Agendamentos</button>
+            </nav>
         </div>
-    </div>
+        <div class="text-xs text-slate-500 text-center">Gastrobar Gogó da Ema<br>25 Anos de Sucesso</div>
+    </aside>
 
-    <div id="painel-rmm" class="h-screen flex escondido">
-        <main class="flex-1 p-10 bg-slate-950 text-center">
-            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Sistema Ativado!</h2>
-            <p class="text-xl text-slate-400">Pronto para as fotos do Gogó da Ema.</p>
-        </main>
-    </div>
+    <main class="flex-1 p-10 overflow-y-auto bg-slate-950">
+        
+        <section id="aba-galeria">
+            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Minha Galeria de Fotos</h2>
+            <div class="grid grid-cols-3 gap-6">
+                <div class="card p-10 text-center border-dashed border-2 border-slate-700 flex flex-col items-center justify-center cursor-pointer hover:bg-slate-800 transition h-64">
+                    <i class="fas fa-cloud-upload-alt text-4xl text-yellow-500 mb-4"></i>
+                    <p class="text-slate-400 font-bold">Clique para subir<br>as fotos do restaurante</p>
+                </div>
+                <div class="card overflow-hidden group">
+                    <div class="h-48 bg-slate-800 flex items-center justify-center text-slate-600 italic text-sm">Espaço para sua foto</div>
+                    <div class="p-3 bg-slate-900 text-xs flex justify-between">
+                        <span>PRATO_PRINCIPAL.JPG</span>
+                        <i class="fas fa-check-circle text-green-500"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="aba-post" class="hidden-section">
+            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Mesa de Preparo</h2>
+            <div class="grid grid-cols-2 gap-10">
+                <div class="card p-6">
+                    <label class="block mb-2 text-sm font-bold">Legenda do Instagram:</label>
+                    <textarea placeholder="Hoje no Gogó da Ema..." class="w-full h-40 bg-slate-800 p-4 rounded mb-4 outline-none border border-slate-700 focus:border-yellow-500"></textarea>
+                    <button class="btn-gold w-full py-3 rounded-lg">PREPARAR POSTAGEM</button>
+                </div>
+                <div class="card p-6 bg-white text-black rounded-xl max-w-sm mx-auto shadow-2xl">
+                    <div class="flex items-center mb-3">
+                        <div class="w-8 h-8 bg-yellow-500 rounded-full mr-3 border border-black text-center text-xs font-bold pt-1.5">G</div>
+                        <span class="font-bold text-sm">gogodaema_oficial</span>
+                    </div>
+                    <div class="bg-slate-200 h-64 w-full rounded flex items-center justify-center text-slate-400 italic">Preview Real Time</div>
+                    <p class="mt-3 text-sm"><b>gogodaema_oficial</b> O presente dos 25 anos é para você!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="aba-calendario" class="hidden-section">
+            <h2 class="text-3xl font-bold mb-6 text-yellow-500">Agenda de Março</h2>
+            <div class="card p-6">
+                <div class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-slate-500 mb-4">
+                    <span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SAB</span>
+                </div>
+                <div class="grid grid-cols-7 gap-2 h-64">
+                    <div class="border border-slate-800 rounded p-2 text-xs">10</div>
+                    <div class="border border-slate-800 rounded p-2 text-xs">11</div>
+                    <div class="border border-slate-800 rounded p-2 text-xs">12</div>
+                    <div class="bg-yellow-500/20 border border-yellow-500 rounded p-2 text-xs text-yellow-500 font-bold">13 (MARCO FARIAS)</div>
+                    <div class="border border-slate-800 rounded p-2 text-xs">14</div>
+                    <div class="border border-slate-800 rounded p-2 text-xs">15</div>
+                    <div class="bg-blue-500/20 border border-blue-500 rounded p-2 text-xs text-blue-400 font-bold italic">16 (HOJE)</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
 
     <script>
-        function liberar() {
-            document.getElementById('tela-login').style.display = 'none';
-            document.getElementById('painel-rmm').style.display = 'block';
+        function mudarAba(aba) {
+            document.getElementById('aba-galeria').classList.add('hidden-section');
+            document.getElementById('aba-post').classList.add('hidden-section');
+            document.getElementById('aba-calendario').classList.add('hidden-section');
+            
+            if(aba === 'galeria') document.getElementById('aba-galeria').classList.remove('hidden-section');
+            if(aba === 'post') document.getElementById('aba-post').classList.remove('hidden-section');
+            if(aba === 'calendario') document.getElementById('aba-calendario').classList.remove('hidden-section');
         }
     </script>
 </body>
